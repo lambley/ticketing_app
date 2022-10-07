@@ -13,3 +13,32 @@ Built using:
 - When a user attemps to purchase a ticket, the ticket is 'locked' for 15 minutes
 - While 'locked', no other user can purchase that ticket
 - Ticket prices can be edited if they are not locked
+
+## Resource Types
+
+|User||
+|---|---|
+|email|string|
+|password|string|
+
+|Ticket||
+|---|---|
+|title|string|
+|price|number|
+|userId|reference to User|
+|orderId|reference to Order|
+
+|Order||
+|---|---|
+|userId|reference to User|
+|status|created/cancelled/awaitingPayment/completed|
+|expiresAt|Date|
+|ticketId|reference to ticket|
+
+|Charge||
+|---|---|
+|orderId|reference to Order|
+|status|created/failed/completed|
+|amount|number|
+|stripeId|string|
+|stripeRefundId|string|
