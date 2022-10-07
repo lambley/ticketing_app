@@ -42,3 +42,14 @@ Built using:
 |amount|number|
 |stripeId|string|
 |stripeRefundId|string|
+
+## Service Types
+
+|Name|Desc|
+|---|---|
+|auth|all signup/in/out|
+|tickets|controls creation, editing, and ticket update logic|
+|orders|creating and editing orders|
+|expiration|monitors order time (default 15mins), after which an order is cancelled|
+|payments|responsible for charges via stripe|
+
