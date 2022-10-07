@@ -1,11 +1,11 @@
 # ticketing_app
 Ticket reselling app created using microservices architecture
 Built using:
-- React (Frontend)
-- Typescript and Express - creating an npm library (Backend)
-- MongoDB and Redis (Database)
-- Next.js (Framework)
-- Docker, Kubernetes, NATS streaming server (Infrastructure)
+- `React` (Frontend)
+- `Typescript` and `Express` - creating an npm library (Backend)
+- `MongoDB` and `Redis` (Database)
+- `Next.js` (Framework)
+- `Docker`, `Kubernetes`, `NATS streaming server` (Infrastructure)
 
 ## Features
 - Users can list a ticket for an event for sale
