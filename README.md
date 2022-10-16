@@ -6,6 +6,7 @@ Built using:
 - `MongoDB` and `Redis` (Database)
 - `Next.js` (Framework)
 - `Docker`, `Kubernetes`, `NATS streaming server` (Infrastructure)
+- `Google Cloud` (remote environment)
 
 ## Features
 - Users can list a ticket for an event for sale
