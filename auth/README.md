@@ -7,6 +7,7 @@
 - express (and @types/express)
 - skaffold
 - ingress-nginx
+- express-validator
 
 ## Initial setup
 
