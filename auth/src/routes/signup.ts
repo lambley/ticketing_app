@@ -18,7 +18,7 @@ router.post(
 
     // if errors are present
     if (!errors.isEmpty()) {
-      // change to throwing an error for error handling middleware to handle in index.ts
+      // change to throwing an error for error handling middleware to handle in index.ts - string in Error() is the message property
       throw new Error('Invalid email or password');
     }
 
