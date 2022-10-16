@@ -18,14 +18,14 @@ router.post(
 
     // if errors are present
     if (!errors.isEmpty()) {
-      // early return: send array of errors
-      return res.status(400).send(errors.array());
+      // change to throwing an error for error handling middleware to handle in index.ts
+      throw new Error('Invalid email or password');
     }
 
     const { email, password } = req.body;
 
     console.log('Creating a user...');
-    
+
     res.send({});
   }
 );
