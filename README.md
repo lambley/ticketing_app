@@ -59,3 +59,6 @@ Built using:
 - OrderCreated OrderCancelled OrderExpired
 - TicketCreated TicketUpdated
 - ChargeCreated
+
+## GoogleCloud
+- notes on remote setup here
