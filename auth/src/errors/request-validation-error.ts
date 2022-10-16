@@ -3,7 +3,7 @@ import { ValidationError } from 'express-validator';
 // subclass of Error to check requests
 export class RequestValidationError extends Error {
   // constructor - always has an array of errors
-  constructor(private errors: ValidationError[]) {
+  constructor(public errors: ValidationError[]) {
     // construct with Error fields
     super();
 
