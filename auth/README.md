@@ -8,6 +8,7 @@
 - skaffold
 - ingress-nginx
 - express-validator
+- express-async-errors
 
 ## Initial setup
 

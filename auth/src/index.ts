@@ -1,4 +1,5 @@
 import express from 'express';
+import 'express-async-errors';
 import { json } from 'body-parser';
 
 import { currentUserRouter } from './routes/current-user';
@@ -18,7 +19,8 @@ app.use(signoutRouter);
 app.use(signupRouter);
 
 // Status 404: throw error for Not Found Routes
-app.all('*', () => {
+// Note: would normally need async... next syntax for Express, but doesn't need it here due to express-async-errors module
+app.all('*', async (req, res, next) => {
   throw new NotFoundError();
 });
 
