@@ -1,7 +1,8 @@
 import { ValidationError } from 'express-validator';
+import { CustomError } from './custom-error';
 
 // subclass of Error for database connection errors
-export class DatabaseConnectionError extends Error {
+export class DatabaseConnectionError extends CustomError {
   statusCode = 500;
   reason = 'Error connecting to database';
 
