@@ -1,5 +1,7 @@
 import express, { Request, Response } from 'express';
 import { body, validationResult } from 'express-validator';
+import { RequestValidationError } from '../errors/request-validation-error';
+import { DatabaseConnectionError } from '../errors/database-connection-error';
 
 const router = express.Router();
 
@@ -18,13 +20,15 @@ router.post(
 
     // if errors are present
     if (!errors.isEmpty()) {
-      // change to throwing an error for error handling middleware to handle in index.ts - string in Error() is the message property
-      throw new Error('Invalid email or password');
+      // throw errors on validation failure
+      throw new RequestValidationError(errors.array());
     }
 
     const { email, password } = req.body;
 
     console.log('Creating a user...');
+    // example error for database connection issue
+    throw new DatabaseConnectionError();
 
     res.send({});
   }
