@@ -1,7 +1,6 @@
 // see "Writing error handlers" https://expressjs.com/en/guide/error-handling.html
 import { Request, Response, NextFunction } from 'express';
-import { RequestValidationError } from '../errors/request-validation-error';
-import { DatabaseConnectionError } from '../errors/database-connection-error';
+import { CustomError } from '../errors/custom-error';
 
 // custom Error object (array of objects)
 // errors: {
@@ -14,14 +13,9 @@ export const errorHandler = (
   res: Response,
   next: NextFunction
 ) => {
-  // request validation errors
-  if (err instanceof RequestValidationError) {
+  // check for CustomError
+  if (err instanceof CustomError) {
     return res.status(err.statusCode).send({ errors: err.serializeErrors() });
-  }
-
-  // database connection errors
-  if (err instanceof DatabaseConnectionError) {
-    return res.status(err.statusCode).send({ error: err.serializeErrors() });
   }
 
   // unexpected errors
