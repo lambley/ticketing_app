@@ -16,25 +16,12 @@ export const errorHandler = (
 ) => {
   // request validation errors
   if (err instanceof RequestValidationError) {
-    // for each error, change error custom Error
-    const formattedErrors = err.errors.map((error) => {
-      return {
-        message: error.msg,
-        field: error.param,
-      };
-    });
-    return res.status(400).send({ errors: formattedErrors });
+    return res.status(err.statusCode).send({ errors: err.serializeErrors() });
   }
 
   // database connection errors
   if (err instanceof DatabaseConnectionError) {
-    return res.status(500).send({
-      errors: [
-        {
-          message: err.reason,
-        },
-      ],
-    });
+    return res.status(err.statusCode).send({ error: err.serializeErrors() });
   }
 
   // unexpected errors
