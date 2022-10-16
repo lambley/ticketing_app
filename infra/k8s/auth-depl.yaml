@@ -15,3 +15,17 @@ spec:
       containers:
         - name: auth
           image: lambley/auth
+---
+# ClusterIP Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: auth-srv
+spec:
+  selector:
+    app: auth
+  ports:
+    - name: auth
+      protocol: TCP
+      port: 3000
+      targetPort: 3000
