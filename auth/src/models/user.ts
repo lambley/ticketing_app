@@ -39,6 +39,9 @@ userSchema.statics.build = (attrs: UserAttrs) => {
 
 // compile User model and export
 // add interfaces for UserDoc and UserModel
+// UserDoc adds attributes for the model
+// UserModel adds return type for the model
+// see mongoose.model definition for more info
 const User = mongoose.model<UserDoc, UserModel>('User', userSchema);
 
 // build a new User like this
