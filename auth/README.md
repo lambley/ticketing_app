@@ -9,6 +9,7 @@
 - ingress-nginx
 - express-validator
 - express-async-errors
+- mongoose
 
 ## Initial setup
 
