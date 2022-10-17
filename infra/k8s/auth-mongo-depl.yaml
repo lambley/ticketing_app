@@ -26,5 +26,6 @@ spec:
   ports:
     # default MongoDB port - see here https://hub.docker.com/_/mongo
     - name: db
-      protocol: 27017
+      protocol: TCP
+      port: 27017
       targetPort: 27017
