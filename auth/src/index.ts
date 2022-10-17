@@ -1,6 +1,7 @@
 import express from 'express';
 import 'express-async-errors';
 import { json } from 'body-parser';
+import mongoose from 'mongoose';
 
 import { currentUserRouter } from './routes/current-user';
 import { signinRouter } from './routes/signin';
@@ -26,6 +27,21 @@ app.all('*', async (req, res, next) => {
 
 app.use(errorHandler);
 
-app.listen(3000, () => {
-  console.log('listening on port 3000');
-});
+// Mongo instance startup function
+// Connect to auth-mongo-srv ClusterIP
+// address structure mongodb://[service name]:[port]/[database name]
+const start = async () => {
+  try {
+    await mongoose.connect('mongodb://auth-mongo-srv:27017/auth');
+    console.log('connected to mongodb/auth');
+  } catch (error) {
+    console.error(error);
+  }
+
+  app.listen(3000, () => {
+    console.log('listening on port 3000');
+  });
+};
+
+// start service
+start();
