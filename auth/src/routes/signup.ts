@@ -1,5 +1,7 @@
 import express, { Request, Response } from 'express';
 import { body, validationResult } from 'express-validator';
+import jwt from 'jsonwebtoken';
+
 import { User } from '../models/user';
 import { RequestValidationError } from '../errors/request-validation-error';
 import { BadRequestError } from '../errors/bad-request-error';
@@ -31,15 +33,29 @@ router.post(
     const existingUser = await User.findOne({ email });
 
     if (existingUser) {
-      throw new BadRequestError('Email already exists')
+      throw new BadRequestError('Email already exists');
     }
 
     // create user and save to database
     const user = User.build({ email, password });
     await user.save();
 
+    // generate JWT (sync)
+    const userJwt = jwt.sign(
+      {
+        id: user.id,
+        email: user.email,
+      },
+      'secretkeyhere'
+    );
+
+    // store it on the session object
+    req.session = {
+      jwt: userJwt,
+    };
+
     // send User created status
-    res.status(201).send(user)
+    res.status(201).send(user);
   }
 );
 
