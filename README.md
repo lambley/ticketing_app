@@ -1,6 +1,7 @@
 # ticketing_app
 Ticket reselling app created using microservices architecture
-Built using:
+
+__Technologies__:
 - `React` (Frontend)
 - `Typescript` and `Express` - creating an npm library (Backend)
 - `MongoDB` and `Redis` (Database)

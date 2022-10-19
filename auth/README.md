@@ -1,6 +1,6 @@
 # Auth
 
-Hand made authentication, including password hashing, creating login tokens
+Custom authentication service, including password hashing, creating JSON Web Tokens (JWTs), using JWTs in Cookies (for server-side rendering) etc.
 
 ## Dependencies
 
