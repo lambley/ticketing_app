@@ -42,6 +42,10 @@ app.use(errorHandler);
 // Connect to auth-mongo-srv ClusterIP
 // address structure mongodb://[service name]:[port]/[database name]
 const start = async () => {
+  // early type guard check for JWT secret key
+  if (!process.env.JWT_KEY) {
+    throw new Error('JWT must be defined');
+  }
   try {
     await mongoose.connect('mongodb://auth-mongo-srv:27017/auth');
     console.log('connected to mongodb/auth');

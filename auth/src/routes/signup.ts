@@ -46,7 +46,9 @@ router.post(
         id: user.id,
         email: user.email,
       },
-      'secretkeyhere'
+      // force typescript to accept JWT_KEY has been defined - see index.ts
+      // get JWT_KEY from k8s auth-depl
+      process.env.JWT_KEY!
     );
 
     // store it on the session object
