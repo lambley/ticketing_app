@@ -9,6 +9,9 @@ __Technologies__:
 - `Docker`, `Kubernetes`, `NATS streaming server` (Infrastructure)
 - `Google Cloud` (remote environment) [optional]
 
+__Global Dependencies__
+- [cookie-session](https://www.npmjs.com/package/cookie-session)
+
 ## Features
 - Users can list a ticket for an event for sale
 - Other users can purchase this ticket

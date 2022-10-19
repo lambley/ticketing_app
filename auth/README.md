@@ -12,6 +12,8 @@ Custom authentication service, including password hashing, creating JSON Web Tok
 - express-validator
 - express-async-errors
 - mongoose
+- [cookie-session](https://www.npmjs.com/package/cookie-session) (and @types/cookie-session)
+- [jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken) (and @types/jsonwebtoken)
 
 ## Initial setup
 
@@ -41,3 +43,7 @@ All belong to Abstract class CustomError
 - `not-found-error` - status 404 when route not found
 - `request-validation-error` - status 400 on failing validation
 - `bad-request-error` - status 400 general use bad request
+
+## About JWTs
+- JWT encoded in base64 - go [here](https://www.base64decode.org/) to decode cookie value
+- Visit [jwt.io](https://jwt.io/) to find out more about JWTs
