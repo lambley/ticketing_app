@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import { Password } from '../helpers/password';
 
 // User model interface - for User attributes
 // interface for user model - all instances must have these fields
@@ -32,6 +33,18 @@ const userSchema = new mongoose.Schema({
     required: true,
   },
 });
+
+// passowrd hashing before saving User password
+// function rather than arrow function - so that 'this' in the below referes to the User document and not this User file
+userSchema.pre('save', async function (done) {
+  if (this.isModified('password')) {
+    // hash current User document password and save hash to database
+    const hashed = await Password.toHash(this.get('password'));
+    this.set('password', hashed);
+  }
+  done();
+});
+
 // refactor buildUser as statics
 userSchema.statics.build = (attrs: UserAttrs) => {
   return new User(attrs);
