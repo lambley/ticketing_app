@@ -34,7 +34,7 @@ const userSchema = new mongoose.Schema({
   },
 });
 
-// passowrd hashing before saving User password
+// password hashing before saving User password
 // function rather than arrow function - so that 'this' in the below referes to the User document and not this User file
 userSchema.pre('save', async function (done) {
   if (this.isModified('password')) {
