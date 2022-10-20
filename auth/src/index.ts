@@ -11,6 +11,7 @@ import { signupRouter } from './routes/signup';
 
 import { errorHandler } from './middlewares/error-handler';
 import { NotFoundError } from './errors/not-found-error';
+import { JwtNotDefinedError } from './errors/jwt-not-defined';
 
 const app = express();
 // allow ingress-nginx proxy for https connection
@@ -44,7 +45,7 @@ app.use(errorHandler);
 const start = async () => {
   // early type guard check for JWT secret key
   if (!process.env.JWT_KEY) {
-    throw new Error('JWT must be defined');
+    throw new JwtNotDefinedError();
   }
   try {
     await mongoose.connect('mongodb://auth-mongo-srv:27017/auth');
