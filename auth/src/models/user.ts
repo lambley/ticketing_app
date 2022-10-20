@@ -23,16 +23,32 @@ interface UserDoc extends mongoose.Document {
 }
 
 // mongoDB User schema
-const userSchema = new mongoose.Schema({
-  email: {
-    type: String,
-    required: true,
+const userSchema = new mongoose.Schema(
+  {
+    email: {
+      type: String,
+      required: true,
+    },
+    password: {
+      type: String,
+      required: true,
+    },
   },
-  password: {
-    type: String,
-    required: true,
-  },
-});
+  {
+    // transform User Document JSON response - specific to Mongoose
+    toJSON: {
+      transform(doc, ret, _options) {
+        // rename _id property
+        ret.id = ret._id;
+        delete ret._id;
+        // remove password property from User JSON
+        delete ret.password;
+        // remove versionKey property from User JSON
+        delete ret.__v;
+      },
+    },
+  }
+);
 
 // password hashing before saving User password
 // function rather than arrow function - so that 'this' in the below referes to the User document and not this User file
