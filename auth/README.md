@@ -21,6 +21,11 @@ Auth flow:
 - mongoose
 - [cookie-session](https://www.npmjs.com/package/cookie-session) (and @types/cookie-session)
 - [jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken) (and @types/jsonwebtoken)
+  for testing:
+- [jest](https://www.npmjs.com/package/jest) (and @types/jest)
+- [ts-jest](https://www.npmjs.com/package/ts-jest)
+- [supertest](https://www.npmjs.com/package/supertest) (and @types/supertest)
+- [mongodb-memory-server](https://www.npmjs.com/package/mongodb-memory-server)
 
 ## Initial setup
 
