@@ -1,9 +1,14 @@
 import { MongoMemoryServer } from 'mongodb-memory-server';
 import mongoose from 'mongoose';
 import { app } from '../app';
+import request from 'supertest';
+
+declare global {
+  var signup: () => Promise<string[]>;
+  var testEmail: string
+}
 
 let mongo: any;
-
 // run before all tests are executed - create mongoDB in memory
 beforeAll(async () => {
   process.env.JWT_KEY = 'secretkeyhere';
@@ -30,3 +35,22 @@ afterAll(async () => {
   }
   await mongoose.connection.close();
 });
+
+// create global signup function to use for testing
+global.testEmail = 'test@test.com'
+global.signup = async () => {
+  const email = testEmail;
+  const password = 'password';
+
+  const response = await request(app)
+    .post('/api/users/signup')
+    .send({
+      email,
+      password,
+    })
+    .expect(201);
+
+  const cookie = response.get('Set-Cookie');
+
+  return cookie;
+};
