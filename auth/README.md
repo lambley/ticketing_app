@@ -2,6 +2,13 @@
 
 Custom authentication service, including password hashing, creating JSON Web Tokens (JWTs), using JWTs in Cookies (for server-side rendering) etc.
 
+Auth flow:
+
+- Request cookie from browser
+- If present, check if JWT is set and valid
+- If JWT is _not_ set or invalid, return early - **no user is signed in**
+- If JWT set and valid, Auth sends JWT payload (email and id) - **user is logged in**
+
 ## Dependencies
 
 - typescript
@@ -45,5 +52,6 @@ All belong to Abstract class CustomError
 - `bad-request-error` - status 400 general use bad request
 
 ## About JWTs
+
 - JWT encoded in base64 - go [here](https://www.base64decode.org/) to decode cookie value
 - Visit [jwt.io](https://jwt.io/) to find out more about JWTs
