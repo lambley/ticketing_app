@@ -43,12 +43,28 @@ it('returns a 400 if no email or password supplied', async () => {
   await request(app).post('/api/users/signup').send({}).expect(400);
 });
 
-// it('returns a 400 if user already exists in database', async () => {
-//   return request(app)
-//     .post('/api/users/signup')
-//     .send({
-//       email: 'test@test.com',
-//       password: 'password',
-//     })
-//     .expect(400);
-// });
+it('does not allow signup with duplicate email', async () => {
+  await request(app)
+    .post('/api/users/signup')
+    .send({
+      email: 'test@test.com',
+      password: 'password',
+    })
+    .expect(201);
+
+  await request(app)
+    .post('/api/users/signup')
+    .send({
+      email: 'test@test.com',
+      password: 'password',
+    })
+    .expect(400);
+});
+
+it('sets a cookie after successful signup', async () => {
+  const res = await request(app).post('/api/users/signup').send({
+    email: 'test@test.com',
+    password: 'password',
+  });
+  expect(res.get('Set-Cookie')).toBeDefined;
+});
