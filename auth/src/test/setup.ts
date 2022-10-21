@@ -6,6 +6,8 @@ let mongo: any;
 
 // run before all tests are executed - create mongoDB in memory
 beforeAll(async () => {
+  process.env.JWT_KEY = 'secretkeyhere';
+
   mongo = await MongoMemoryServer.create();
   const mongoUri = mongo.getUri();
 
