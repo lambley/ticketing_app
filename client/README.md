@@ -7,8 +7,10 @@ For server-side rendering of app, the Next.js client handles fetching and buildi
 - [react](https://www.npmjs.com/package/react)
 - [react-dom](https://www.npmjs.com/package/react-dom)
 - [next.js](https://www.npmjs.com/package/next)
+- [bootstrap](https://www.npmjs.com/package/bootstrap)
 
 ## Start Client
+
 - Install dependencies
 - run `npm run dev`
 
