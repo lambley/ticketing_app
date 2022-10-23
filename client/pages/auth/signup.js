@@ -16,9 +16,21 @@ const Signup = () => {
         password,
       });
     } catch (error) {
-      console.log(error.response.data.errors);
       setErrors(error.response.data.errors);
     }
+  };
+
+  const checkError = (field) => {
+    return errors.find((error) => error.field === field);
+  };
+
+  const renderError = (field) => {
+    const error = errors.find((error) => error.field === field);
+    return (
+      <div className="alert alert-danger">
+        <em>{error.message}</em>
+      </div>
+    );
   };
 
   return (
@@ -32,11 +44,7 @@ const Signup = () => {
           type="text"
           className="form-control"
         />
-        {errors.filter((error) => error.field === 'email').length > 0 && (
-          <div className="alert alert-danger">
-            {errors.find((error) => error.field === 'email').message}
-          </div>
-        )}
+        {checkError('email') && renderError('email')}
       </div>
       <div className="form-group">
         <label htmlFor="">Password</label>
@@ -46,23 +54,8 @@ const Signup = () => {
           type="password"
           className="form-control"
         />
-        {errors.filter((error) => error.field === 'password').length > 0 && (
-          <div className="alert alert-danger">
-            {errors.find((error) => error.field === 'password').message}
-          </div>
-        )}
+        {checkError('password') && renderError('password')}
       </div>
-
-      {errors.length > 0 && (
-        <div className="alert alert-danger">
-          <h4>Oops...</h4>
-          <ul className="my-0">
-            {errors.map((error) => (
-              <li key={error.message}>{error.message}</li>
-            ))}
-          </ul>
-        </div>
-      )}
 
       <button className="btn btn-primary">Sign Up</button>
     </form>
