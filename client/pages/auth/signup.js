@@ -32,6 +32,11 @@ const Signup = () => {
           type="text"
           className="form-control"
         />
+        {errors.filter((error) => error.field === 'email').length > 0 && (
+          <div className="alert alert-danger">
+            {errors.find((error) => error.field === 'email').message}
+          </div>
+        )}
       </div>
       <div className="form-group">
         <label htmlFor="">Password</label>
@@ -41,6 +46,11 @@ const Signup = () => {
           type="password"
           className="form-control"
         />
+        {errors.filter((error) => error.field === 'password').length > 0 && (
+          <div className="alert alert-danger">
+            {errors.find((error) => error.field === 'password').message}
+          </div>
+        )}
       </div>
 
       {errors.length > 0 && (
