@@ -1,6 +1,5 @@
 // route: /auth/signup
 import { useState } from 'react';
-import axios from 'axios';
 import useRequest from '../../hooks/use-request';
 
 const Signup = () => {
