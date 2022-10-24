@@ -19,7 +19,7 @@ const useRequest = ({ url, method, body, onSuccess }) => {
       return response.data;
     } catch (error) {
       setErrors(error.response.data.errors);
-      throw error;
+      throw error.response.data.errors;
     }
   };
 
