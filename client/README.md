@@ -24,4 +24,12 @@ Uses a Pages-style routing
 
 ## Note: Serverside rendering - making use of `getInitialProps`
 
-`getInitialProps` is a Next.js convention to load data upon initial request, for serverside rendering
+`getInitialProps` is a Next.js convention to load data upon initial request, for serverside rendering.
+
+Although there are difficulties making server requests within the ingress-nginx cluster... (browser requests are unaffected)
+
+To access ingress-nginx within the cluster, the client must make a `Cross namespace service communication` (i.e. between `default` and `ingress-nginx` namespace). Namespace here has a specific meaning in Kubernetes. URL will take a form like so: `http://NAME_OF_SERVICE.NAMESPACE.svc.cluster.local`
+
+In this project, ingress-nginx service name is `ingress-nginx-controller` (find this by running `kubectl get services -n ingress-nginx`)
+
+An `ExternalNameService` is an alternative to map a simpler URL - see [here](https://kubernetes.io/docs/concepts/services-networking/service/)
