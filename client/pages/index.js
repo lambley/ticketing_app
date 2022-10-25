@@ -11,7 +11,8 @@ const Index = ({ currentUser }) => {
 };
 
 Index.getInitialProps = async (context) => {
-  const { data } = await buildClient(context).get('/api/users/currentuser');
+  const client = buildClient(context);
+  const { data } = await client.get('/api/users/currentuser');
 
   return data;
 };
