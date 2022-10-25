@@ -21,3 +21,7 @@ Uses a Pages-style routing
 
 - Index.js - this is the root route
 - Other page files - map to other routes
+
+## Note: Serverside rendering - making use of `getInitialProps`
+
+`getInitialProps` is a Next.js convention to load data upon initial request, for serverside rendering
