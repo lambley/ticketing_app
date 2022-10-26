@@ -15,8 +15,14 @@ const _App = ({ Component, pageProps }) => {
 
 _App.getInitialProps = async (appContext) => {
   const client = buildClient(appContext.ctx);
-
   const { data } = await client.get('/api/users/currentuser');
+
+  // to call getInitialProps in child pages
+  let pageProps = {};
+  // check if there are getIntialProps
+  if (appContext.Component.getInitialProps) {
+    pageProps = await appContext.Component.getInitialProps(appContext.ctx);
+  }
 
   return data;
 };
