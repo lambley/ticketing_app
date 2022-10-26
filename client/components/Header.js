@@ -13,7 +13,11 @@ const Header = ({ currentUser }) => {
   ]
     .filter((linkConfig) => linkConfig)
     .map(({ label, href }) => {
-      return <li key={href}>{label}</li>;
+      return (
+        <li key={href} className="nav-link">
+          <Link href={href}>{label}</Link>
+        </li>
+      );
     });
 
   return (
