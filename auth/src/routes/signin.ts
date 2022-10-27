@@ -4,8 +4,11 @@ import jwt from 'jsonwebtoken';
 
 import { Password } from '../helpers/password';
 import { User } from '../models/user';
-import { validateRequest } from '../middlewares/validate-request';
-import { BadRequestError } from '../errors/bad-request-error';
+import {
+  validateRequest,
+  BadRequestError,
+} from '@lambley-ticketing/ticketing-common/build';
+
 const router = express.Router();
 
 router.post(

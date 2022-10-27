@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { JwtNotDefinedError } from './errors/jwt-not-defined';
+import { JwtNotDefinedError } from '@lambley-ticketing/ticketing-common/build';
 
 import { app } from './app';
 

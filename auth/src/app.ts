@@ -8,8 +8,10 @@ import { signinRouter } from './routes/signin';
 import { signoutRouter } from './routes/signout';
 import { signupRouter } from './routes/signup';
 
-import { errorHandler } from './middlewares/error-handler';
-import { NotFoundError } from './errors/not-found-error';
+import {
+  errorHandler,
+  NotFoundError,
+} from '@lambley-ticketing/ticketing-common/build';
 
 const app = express();
 // allow ingress-nginx proxy for https connection
