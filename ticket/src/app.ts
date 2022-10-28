@@ -3,6 +3,8 @@ import 'express-async-errors';
 import { json } from 'body-parser';
 import cookieSession from 'cookie-session';
 
+import { createTicketRouter } from './routes/new';
+
 import {
   errorHandler,
   NotFoundError,
@@ -20,6 +22,8 @@ app.use(
     secure: process.env.NODE_ENV !== 'test',
   })
 );
+
+app.use(createTicketRouter);
 
 // Status 404: throw error for Not Found Routes
 // Note: would normally need async... next syntax for Express, but doesn't need it here due to express-async-errors module
