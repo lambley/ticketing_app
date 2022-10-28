@@ -8,6 +8,7 @@ import { createTicketRouter } from './routes/new';
 import {
   errorHandler,
   NotFoundError,
+  currentUser,
 } from '@lambley-ticketing/ticketing-common/build';
 
 const app = express();
@@ -22,6 +23,8 @@ app.use(
     secure: process.env.NODE_ENV !== 'test',
   })
 );
+// for checking if user is signed in
+app.use(currentUser);
 
 app.use(createTicketRouter);
 
