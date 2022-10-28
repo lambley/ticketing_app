@@ -21,6 +21,8 @@ spec:
                 secretKeyRef:
                   name: jwt-secret
                   key: JWT_KEY
+            - name: MONGO_URI
+              value: 'mongodb://ticket-mongo-srv:27017/ticket'
 ---
 # ClusterIP Service
 apiVersion: v1
