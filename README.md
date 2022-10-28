@@ -91,3 +91,13 @@ Test Goals
 - Basic Request Handling
 - Unit Tests for database Models
 - Event emitting and receiving
+
+## Flow for creating each service
+
+- Create package.json with `npm init -y` and install dependencies
+- Write `Dockerfile`
+- Create `index.ts` as entry point for project
+- Build docker image and push to docker hub
+- Write k8s file for deployment and service(s) e.g. ClusterIP
+- Update `skaffold.yaml` for development update syncing
+- Write k8s file for `MongoDB` deployment and service e.g. ClusterIP
