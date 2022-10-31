@@ -30,7 +30,7 @@ const ticketSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    number: {
+    price: {
       type: Number,
       required: true,
     },
@@ -46,8 +46,6 @@ const ticketSchema = new mongoose.Schema(
         // rename _id property
         ret.id = ret._id;
         delete ret._id;
-        // remove versionKey property from Ticket JSON
-        delete ret.__v;
       },
     },
   }
