@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 // Ticket model interface - for Ticket attributes
 // interface for Ticket model - all instances must have these fields
 interface TicketAttrs {
-  ticket: string;
+  title: string;
   price: number;
   TicketId: string;
 }
