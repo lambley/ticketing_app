@@ -42,12 +42,10 @@ const ticketSchema = new mongoose.Schema(
   {
     // transform Ticket Document JSON response - specific to Mongoose
     toJSON: {
-      transform(doc, ret, _options) {
+      transform(_doc, ret, _options) {
         // rename _id property
         ret.id = ret._id;
         delete ret._id;
-        // remove password property from Ticket JSON
-        delete ret.password;
         // remove versionKey property from Ticket JSON
         delete ret.__v;
       },
