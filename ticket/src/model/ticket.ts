@@ -18,7 +18,7 @@ interface TicketModel extends mongoose.Model<TicketDoc> {
 // Ticket Document interface
 // interface for describing a single Ticket's properties
 interface TicketDoc extends mongoose.Document {
-  ticket: string;
+  title: string;
   price: number;
   userId: string;
 }
@@ -65,10 +65,11 @@ ticketSchema.statics.build = (attrs: TicketAttrs) => {
 // see mongoose.model definition for more info
 const Ticket = mongoose.model<TicketDoc, TicketModel>('Ticket', ticketSchema);
 
-// build a new User like this
-// const user = User.build({
-//   email: 'test@test.com',
-//   password: 'pass',
+// build a new Ticket like this
+// const ticket = Ticket.build({
+//   title: 'test ticket',
+//   price: 20.00,
+//   userId: "some_id"
 // });
 
 export { Ticket };
