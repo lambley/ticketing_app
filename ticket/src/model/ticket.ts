@@ -5,7 +5,7 @@ import mongoose from 'mongoose';
 interface TicketAttrs {
   title: string;
   price: number;
-  TicketId: string;
+  userId: string;
 }
 
 // Ticket model interface - for Ticket properties
