@@ -22,7 +22,31 @@ it('returns 401 if user is not authenticated', async () => {
     .expect(401);
 });
 
-it('returns 401 if user does not own ticket', async () => {});
+it('returns 401 if user does not own ticket', async () => {
+  const originalTitle = 'test';
+  const originalPrice = 20;
+
+  const res = await request(app)
+    .post('/api/ticket')
+    .set('Cookie', global.signin())
+    .send({
+      title: originalTitle,
+      price: originalPrice,
+    })
+    .expect(201);
+
+  await request(app)
+    .put(`/api/tickets/${res.body.ticket.id}`)
+    .set('Cookie', global.signin())
+    .send({
+      title: 'test2',
+      price: '30',
+    })
+    .expect(401);
+
+  expect(res.body.ticket.title).toEqual(originalTitle);
+  expect(res.body.ticket.price).toEqual(originalPrice);
+});
 
 it('returns 401 if user does provide valid title or price', async () => {});
 

@@ -21,6 +21,11 @@ router.put(
       throw new NotFoundError();
     }
 
+    // check user owns the ticket theyre trying to edit
+    if (ticket.userId !== req.currentUser!.id) {
+      throw new NotAuthorisedError();
+    }
+
     // send back updated ticket
     res.send(ticket);
   }
