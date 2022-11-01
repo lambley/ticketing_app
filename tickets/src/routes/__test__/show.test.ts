@@ -11,7 +11,7 @@ it('should return a ticket if ticket is found', async () => {
   const price = 20;
 
   const res = await request(app)
-    .post('/api/tickets')
+    .post('/api/ticket')
     .set('Cookie', global.signin())
     .send({
       title,
@@ -20,7 +20,7 @@ it('should return a ticket if ticket is found', async () => {
     .expect(201);
 
   const ticketRes = await request(app)
-    .get(`/api/tickets/${res.body.id}`)
+    .get(`/api/tickets/${res.body.ticket.id}`)
     .send()
     .expect(200);
 
