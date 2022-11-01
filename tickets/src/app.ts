@@ -6,6 +6,7 @@ import cookieSession from 'cookie-session';
 import { createTicketRouter } from './routes/new';
 import { showTicketRouter } from './routes/show';
 import { indexTicketRouter } from './routes';
+import { updateTicketRouter } from './routes/update';
 
 import {
   errorHandler,
@@ -32,6 +33,7 @@ app.use(currentUser);
 app.use(createTicketRouter);
 app.use(showTicketRouter);
 app.use(indexTicketRouter);
+app.use(updateTicketRouter)
 
 // Status 404: throw error for Not Found Routes
 // Note: would normally need async... next syntax for Express, but doesn't need it here due to express-async-errors module
