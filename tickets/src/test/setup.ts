@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import { app } from '../app';
 import request from 'supertest';
 import jwt from 'jsonwebtoken';
+import { randomBytes } from 'crypto';
 
 // global function type annotation
 declare global {
@@ -41,7 +42,7 @@ afterAll(async () => {
 global.signin = () => {
   // build a jwt payload { id, email }
   const payload = {
-    id: '12312312213',
+    id: randomBytes(20).toString('hex'),
     email: 'test@test.com',
   };
 
