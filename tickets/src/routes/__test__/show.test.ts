@@ -1,9 +1,12 @@
 // tests for showing a ticket
 import request from 'supertest';
 import { app } from '../../app';
+import mongoose from 'mongoose';
 
 it('should return a 404 if ticket is not found', async () => {
-  await request(app).get('/api/tickets/some_id').send().expect(404);
+  const id = new mongoose.Types.ObjectId().toHexString();
+
+  await request(app).get(`/api/tickets/${id}`).send().expect(404);
 });
 
 it('should return a ticket if ticket is found', async () => {
