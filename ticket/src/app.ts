@@ -4,6 +4,7 @@ import { json } from 'body-parser';
 import cookieSession from 'cookie-session';
 
 import { createTicketRouter } from './routes/new';
+import { showTicketRouter } from './routes/show';
 
 import {
   errorHandler,
@@ -26,7 +27,9 @@ app.use(
 // for checking if user is signed in
 app.use(currentUser);
 
+// routes
 app.use(createTicketRouter);
+app.use(showTicketRouter);
 
 // Status 404: throw error for Not Found Routes
 // Note: would normally need async... next syntax for Express, but doesn't need it here due to express-async-errors module
