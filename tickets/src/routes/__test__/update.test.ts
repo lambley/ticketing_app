@@ -48,6 +48,39 @@ it('returns 401 if user does not own ticket', async () => {
   expect(res.body.ticket.price).toEqual(originalPrice);
 });
 
-it('returns 401 if user does provide valid title or price', async () => {});
+it('returns 401 if user does provide valid title or price', async () => {
+  const originalTitle = 'test';
+  const originalPrice = 20;
+  const originalUserCookie = global.signin();
+
+  const res = await request(app)
+    .post('/api/ticket')
+    .set('Cookie', originalUserCookie)
+    .send({
+      title: originalTitle,
+      price: originalPrice,
+    })
+    .expect(201);
+
+  // check that invalid title is being rejected
+  await request(app)
+    .put(`/api/tickets/${res.body.ticket.id}`)
+    .set('Cookie', originalUserCookie)
+    .send({
+      title: '',
+      price: 20,
+    })
+    .expect(400);
+
+  // check that invalid price is being rejected
+  await request(app)
+    .put(`/api/tickets/${res.body.ticket.id}`)
+    .set('Cookie', originalUserCookie)
+    .send({
+      title: 'update',
+      price: -10,
+    })
+    .expect(400);
+});
 
 it('updates the ticket provided valid inputs', async () => {});
