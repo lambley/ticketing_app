@@ -1,11 +1,11 @@
-# Ticket Service
+# Tickets Service
 
 Function of this service:
 
-- (READ) List all tickets
-- (READ) Show individual tickets
-- (CREATE) Create a new ticket - _needs authentication_
-- (UPDATE) Edit a ticket - _needs authentication_
+- (READ) List all tickets - index, `GET: /api/tickets`
+- (READ) Show individual tickets - show, `GET: /api/tickets/:id`
+- (CREATE) Create a new ticket - _needs authentication_ - new, `POST: /api/tickets`
+- (UPDATE) Edit a ticket - _needs authentication_ - update, `POST: /api/tickets/:id`
 
 ## Sharing Code between services - some thoughts
 

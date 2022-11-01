@@ -27,7 +27,7 @@ it('returns 401 if user does not own ticket', async () => {
   const originalPrice = 20;
 
   const res = await request(app)
-    .post('/api/ticket')
+    .post('/api/tickets')
     .set('Cookie', global.signin())
     .send({
       title: originalTitle,
@@ -54,7 +54,7 @@ it('returns 401 if user does provide valid title or price', async () => {
   const originalUserCookie = global.signin();
 
   const res = await request(app)
-    .post('/api/ticket')
+    .post('/api/tickets')
     .set('Cookie', originalUserCookie)
     .send({
       title: originalTitle,
@@ -89,7 +89,7 @@ it('updates the ticket provided valid inputs', async () => {
   const originalUserCookie = global.signin();
 
   const res = await request(app)
-    .post('/api/ticket')
+    .post('/api/tickets')
     .set('Cookie', originalUserCookie)
     .send({
       title: originalTitle,

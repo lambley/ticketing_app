@@ -6,7 +6,7 @@ const createTicket = () => {
   const title = 'test ticket';
   const price = 20;
   return request(app)
-    .post('/api/ticket')
+    .post('/api/tickets')
     .set('Cookie', global.signin())
     .send({
       title,
