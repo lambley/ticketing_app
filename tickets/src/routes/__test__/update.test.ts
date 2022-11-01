@@ -83,4 +83,33 @@ it('returns 401 if user does provide valid title or price', async () => {
     .expect(400);
 });
 
-it('updates the ticket provided valid inputs', async () => {});
+it('updates the ticket provided valid inputs', async () => {
+  const originalTitle = 'test';
+  const originalPrice = 20;
+  const originalUserCookie = global.signin();
+
+  const res = await request(app)
+    .post('/api/ticket')
+    .set('Cookie', originalUserCookie)
+    .send({
+      title: originalTitle,
+      price: originalPrice,
+    })
+    .expect(201);
+
+  await request(app)
+    .put(`/api/tickets/${res.body.ticket.id}`)
+    .set('Cookie', originalUserCookie)
+    .send({
+      title: 'updated title',
+      price: 200,
+    })
+    .expect(200);
+
+  const ticketRes = await request(app)
+    .get(`/api/tickets/${res.body.ticket.id}`)
+    .send();
+
+  expect(ticketRes.body.title).toEqual('updated title');
+  expect(ticketRes.body.price).toEqual(200);
+});

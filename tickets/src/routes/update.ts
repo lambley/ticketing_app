@@ -33,6 +33,13 @@ router.put(
       throw new NotAuthorisedError();
     }
 
+    // as update is valid and authentic - update ticket
+    ticket.set({
+      title: req.body.title,
+      price: req.body.price,
+    });
+    await ticket.save();
+
     // send back updated ticket
     res.send(ticket);
   }
