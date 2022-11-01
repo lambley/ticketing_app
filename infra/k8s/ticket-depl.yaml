@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: ticket
-          image: lambley/ticket
+          image: lambley/tickets
           env:
             - name: JWT_KEY
               valueFrom:

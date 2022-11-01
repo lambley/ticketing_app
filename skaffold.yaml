@@ -24,8 +24,8 @@ build:
         manual:
           - src: '**/*.js'
             dest: .
-    - image: lambley/ticket
-      context: ticket
+    - image: lambley/tickets
+      context: tickets
       docker:
         dockerfile: Dockerfile
       sync:
