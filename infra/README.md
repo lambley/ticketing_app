@@ -18,3 +18,11 @@ kubectl create secret generic [secret-name] --from-literal=[secret-variable-name
 ```
 
 - run `kubectl get secrets` to view all current secrets`
+
+## Notes on NATS Streaming Server
+
+Event bus for ticketing app. Documentation can be found [here](https://docs.nats.io/).
+NOTE: NATS =/= NATS Streaming Server. NATS Streaming Server is built upon NATS but they are different implementations.
+
+Uses `nats-streaming` docker image - note: this will be deprecated in June 2023.
+
