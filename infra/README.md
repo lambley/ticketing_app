@@ -26,3 +26,4 @@ NOTE: NATS =/= NATS Streaming Server. NATS Streaming Server is built upon NATS b
 
 Uses `nats-streaming` docker image - note: this will be deprecated in June 2023.
 
+![Untitled Diagram drawio (1)](https://user-images.githubusercontent.com/42571140/200165588-4ff2d464-c999-4b72-af23-deb7eaa35f94.png)
