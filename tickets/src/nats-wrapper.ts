@@ -18,11 +18,11 @@ class NatsWrapper {
 
     return new Promise<void>((resolve, reject) => {
       // on connect, log connection
-      this._client!.on('connect', () => {
+      this.client.on('connect', () => {
         console.log('Connected to NATS');
         resolve();
       });
-      this._client!.on('error', (err) => {
+      this.client.on('error', (err) => {
         reject(err);
       });
     });
