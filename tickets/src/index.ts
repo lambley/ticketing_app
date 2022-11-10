@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import { JwtNotDefinedError } from '@lambley-ticketing/ticketing-common/build';
+import { natsWrapper } from './nats-wrapper';
 
 import { app } from './app';
 
@@ -16,7 +17,9 @@ const start = async () => {
     throw new Error('MONGO_URI must be defined');
   }
 
+  // connect to MongoDB and NATS
   try {
+    await natsWrapper.connect('ticketing', 'client_id', 'http://nats-srv:4222');
     await mongoose.connect(process.env.MONGO_URI);
     console.log('connected to mongodb/ticket');
   } catch (error) {
