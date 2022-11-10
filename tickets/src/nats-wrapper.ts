@@ -20,4 +20,5 @@ class NatsWrapper {
   }
 }
 
+// export an instance to be used by the whole service, rather than the class
 export const natsWrapper = new NatsWrapper();
