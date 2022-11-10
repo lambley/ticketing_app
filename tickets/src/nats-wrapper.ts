@@ -4,6 +4,15 @@ class NatsWrapper {
   // _client is not initialised here, but in the start() function in index.ts
   private _client?: Stan;
 
+  // accessor to control access to client only after successful connection
+  get client() {
+    if (!this._client) {
+      throw new Error('Cannot access NATS client before connecting');
+    }
+
+    return this._client;
+  }
+
   connect(clusterId: string, clientId: string, url: string) {
     this._client = nats.connect(clusterId, clientId, { url });
 
