@@ -7,6 +7,8 @@ import {
   requireAuth,
   NotAuthorisedError,
 } from '@lambley-ticketing/ticketing-common/build';
+import { TicketUpdatedPublisher } from '../events/publishers/ticket-updated-publisher';
+import { natsWrapper } from '../nats-wrapper';
 
 const router = express.Router();
 
@@ -39,6 +41,14 @@ router.put(
       price: req.body.price,
     });
     await ticket.save();
+
+    // emit update event
+    new TicketUpdatedPublisher(natsWrapper.client).publish({
+      id: ticket.id,
+      title: ticket.title,
+      price: ticket.price,
+      userId: ticket.userId,
+    });
 
     // send back updated ticket
     res.send(ticket);
