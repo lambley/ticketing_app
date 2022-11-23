@@ -2,9 +2,12 @@
 export const natsWrapper = {
   // create a mock client with publish method
   client: {
-    publish: (subject: string, data: string, callback: () => void) => {
-      // invoke callback straight away to close the promise
-      callback();
-    },
+    publish: jest
+      .fn()
+      .mockImplementation(
+        (subject: string, data: string, callback: () => void) => {
+          callback();
+        }
+      ),
   },
 };
