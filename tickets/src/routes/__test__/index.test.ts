@@ -2,8 +2,6 @@
 import request from 'supertest';
 import { app } from '../../app';
 
-jest.mock('../../nats-wrapper');
-
 const createTicket = () => {
   const title = 'test ticket';
   const price = 20;

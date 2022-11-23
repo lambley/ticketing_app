@@ -9,6 +9,8 @@ declare global {
   var signin: () => string[];
 }
 
+jest.mock('../nats-wrapper');
+
 let mongo: any;
 // run before all tests are executed - create mongoDB in memory
 beforeAll(async () => {
