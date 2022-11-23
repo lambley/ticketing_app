@@ -20,6 +20,16 @@ const start = async () => {
   // connect to MongoDB and NATS
   try {
     await natsWrapper.connect('ticketing', 'client_id', 'http://nats-srv:4222');
+
+    // graceful NATS shutdown
+    natsWrapper.client.on('close', () => {
+      console.log('NATS connection closed');
+      process.exit();
+    });
+    process.on('SIGINT', () => natsWrapper.client.close());
+    process.on('SIGTERM', () => natsWrapper.client.close());
+
+    // connect to mongo db
     await mongoose.connect(process.env.MONGO_URI);
     console.log('connected to mongodb/ticket');
   } catch (error) {
