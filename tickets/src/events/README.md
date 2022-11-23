@@ -7,3 +7,7 @@ In the event that the NATS streaming server is down when a transaction/ticket ha
 The events DB will contain a collection of received events, along with a status of whether the event has been emitted to the respective service.
 
 This will ensure that data is accurate between services.
+
+Mongo has a transaction mechanism that allows for rollback when either transaction/ticket creation or event creation fails.
+
+NOTE: not yet implemented
