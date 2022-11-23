@@ -1,7 +1,9 @@
 // tests for showing a ticket
 import request from 'supertest';
 import { app } from '../../app';
-import mongoose from 'mongoose';
+import mongoose from 'mongoose';3
+
+jest.mock('../../nats-wrapper');
 
 it('should return a 404 if ticket is not found', async () => {
   const id = new mongoose.Types.ObjectId().toHexString();
