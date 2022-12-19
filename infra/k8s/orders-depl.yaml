@@ -6,7 +6,7 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: order
+      app: orders
   template:
     metadata:
       labels:
